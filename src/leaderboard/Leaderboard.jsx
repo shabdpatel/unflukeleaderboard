@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Pie } from 'react-chartjs-2';
-import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie, Line } from 'react-chartjs-2';
+import { Chart, ArcElement, Tooltip, Legend, LineElement, PointElement, LinearScale, Title, CategoryScale } from 'chart.js';
 
-Chart.register(ArcElement, Tooltip, Legend);
+Chart.register(ArcElement, Tooltip, Legend, LineElement, PointElement, LinearScale, Title, CategoryScale);
 
 const leaderboardData = [
     { rank: 1, name: 'Selling with re entr', calmarRatio: 3.96, overallProfit: 381845, avgDailyProfit: 319.54, winRate: '0.65', price: '-', action: 'View', slippage: 0 },
@@ -12,6 +12,8 @@ const leaderboardData = [
     { rank: 5, name: 'Based on premium', calmarRatio: 3.42, overallProfit: 255425, avgDailyProfit: 208.51, winRate: '0.64', price: '500', action: 'View', slippage: 0 },
     { rank: 6, name: 'strategy_name', calmarRatio: 3.42, overallProfit: 255425, avgDailyProfit: 208.51, winRate: '0.64', price: '500', action: 'View', slippage: 0 },
     { rank: 7, name: 'Based on premium', calmarRatio: 3.42, overallProfit: 255425, avgDailyProfit: 208.51, winRate: '0.64', price: '600', action: 'View', slippage: 0 },
+    { rank: 8, name: 'Based on premium', calmarRatio: 3.42, overallProfit: 255425, avgDailyProfit: 208.51, winRate: '0.64', price: '600', action: 'View', slippage: 0 },
+    { rank: 9, name: 'Based on premium', calmarRatio: 3.42, overallProfit: 255425, avgDailyProfit: 208.51, winRate: '0.64', price: '600', action: 'View', slippage: 0 },
     // Add more data as needed
 ];
 
@@ -44,8 +46,22 @@ const Leaderboard = () => {
         ],
     };
 
+    const lineChartData = {
+        labels: leaderboardData.map(strategy => strategy.name),
+        datasets: [
+            {
+                label: 'Rank',
+                data: leaderboardData.map(strategy => strategy.rank),
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                fill: false,
+                tension: 0.1,
+            },
+        ],
+    };
+
     return (
-        <div className="flex flex-col items-center w-450 bg-gray-900 p-8 rounded-lg shadow-md">
+        <div className="flex flex-col items-center w-500 bg-gray-900 p-8 rounded-lg shadow-md">
             <h1 className="text-4xl font-bold mb-6 text-center text-white">LeaderBoards</h1>
             <div className="flex justify-between items-center mb-4 w-full">
                 <h2 className="text-xl font-bold text-white">Basic Backtest</h2>
@@ -89,6 +105,10 @@ const Leaderboard = () => {
                     <div className="w-full mt-8">
                         <h2 className="text-xl font-bold text-white mb-4">Overall Profit Distribution</h2>
                         <Pie data={chartData} />
+                        <div className="mt-24">
+                            <h2 className="text-xl font-bold text-white mb-4">Rank Distribution</h2>
+                            <Line data={lineChartData} />
+                        </div>
                     </div>
                 </div>
             </div>
