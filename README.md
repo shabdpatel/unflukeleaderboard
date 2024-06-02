@@ -7,6 +7,13 @@ This project is a leaderboard for displaying backtesting results of different tr
 
 ## Project Setup
 
+- [Project Setup](#project-setup)
+- [Project Structure](#project-structure)
+- [Dependencies](#dependencies)
+- [Scripts](#scripts)
+- [Features](#features)
+- [Contributing](#contributing)
+- [License](#license)
 ### Prerequisites
 
 Before you begin, ensure you have met the following requirements:
