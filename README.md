@@ -4,13 +4,6 @@ This project is a leaderboard for displaying backtesting results of different tr
 
 ## Table of Contents
 
-- [Project Setup](#project-setup)
-- [Project Structure](#project-structure)
-- [Dependencies](#dependencies)
-- [Scripts](#scripts)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Project Setup
 
